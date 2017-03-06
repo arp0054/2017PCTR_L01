@@ -30,9 +30,18 @@ public class Ball {
 		}
 		x += dx;   
 		y += dy;
-		//TODO Check postcondition
+		
+		assert (postcondiciones(x, y)): "Coordenadas fuera de rango";
 	}
-
+	
+	private boolean postcondiciones(double corx, double cory){
+		if (corx>Board.RIGHTBOARD || corx<Board.LEFTBOARD || cory>Board.TOPBOARD || cory<Board.BOTTOMBOARD){
+			return false;
+		}
+		return true;
+		
+	}
+	
 	public void reflect() {
 		if (Math.abs(x + 32 - Board.RIGHTBOARD) <  Math.abs(dx)) {
 			fi = Math.PI - fi;
